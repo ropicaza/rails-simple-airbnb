@@ -1,4 +1,6 @@
 class FlatsController < ApplicationController
+  before_action :find_flat, only: [:show, :edit]
+
   def index
     @flats = Flat.all
   end
@@ -20,4 +22,11 @@ class FlatsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def find_flat
+    @flat= Flat.find(params[:id])
+  end
+
 end
